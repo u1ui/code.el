@@ -12,7 +12,7 @@
     <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/simple.min.css">
 
 
-    <script src="https://cdn.jsdelivr.net/gh/nuxodin/cleanup.js@1.1.0/mod.min.js"></script>
+    <!--script src="https://cdn.jsdelivr.net/gh/nuxodin/cleanup.js@1.1.0/mod.min.js"></script-->
 
     <link rel=stylesheet href="../code.css">
     <script src="../code.js" type=module></script>
@@ -26,10 +26,54 @@
     </header>
 
     <section>
-        <h2>Counter</h2>
-        <u1-code>
-            function(){
-                echo 111;
-            }
 
+        <h2>Auto javascript</h2>
+
+        <u1-code trim>
+            function get111(){
+                echo 'very long text to test overflow, bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla';
+            }
         </u1-code>
+
+        <h2>Auto css</h2>
+        <u1-code trim>
+            body {
+                background-color: #f00;
+            }
+        </u1-code>
+
+
+        <h2>Style Tag and "editable"-attribute</h2>
+        <u1-code trim editable>
+            <style>
+            u1-code {
+                padding:1rem;
+                font-size:14px;
+                background:#fff;
+                box-shadow:0 0 1rem #0004;
+                max-height:10rem;
+            }
+            </style>
+        </u1-code>
+
+        <h2>Script Tag</h2>
+        <u1-code trim>
+            <script>
+                document.currentScript.parentNode.addEventListener('click', e=>{
+                    alert(1)
+                });
+            </script>
+        </u1-code>
+
+        <h2>Textarea <small>todo: make editable</small></h2>
+        <u1-code trim>
+            <textarea>
+            &lt;u1-code&gt;
+                &lt;textarea&gt;
+                &amp;lt;u1-code&amp;gt;...
+                &lt;/textarea&gt;
+            &lt;/u1-code&gt;
+            </textarea>
+        </u1-code>
+
+    </section>

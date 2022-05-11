@@ -1,4 +1,6 @@
 u1-code {
+    font-family: Consolas, "Courier New", Courier, monospace;
+    display:block;
     white-space: pre;
-    font-family: "Courier New", Courier, monospace;
+    overflow:auto;
 }
