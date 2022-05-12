@@ -64,8 +64,6 @@ class code extends HTMLElement {
         // shadowRoot.querySelector('#fullscreen').addEventListener('click', () => {
         //     this.requestFullscreen();
         // });
-
-
         this.textarea.addEventListener('input', e => {
             this.setHightlightValue(e.target.value);
             this.setSourceValue(e.target.value);
@@ -94,17 +92,17 @@ class code extends HTMLElement {
     setSourceValue(value){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') { el.value = value; return; }
-        if (el.tagName === this) { el.innerHTML = htmlEncode(value); return }
-        el.innerHTML = value;
+        if (el.tagName === 'TEMPLATE') { el.innerHTML = value; return; }
+        el.textContent = value;
     }
     getSourceValue(){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') return el.value;
-        if (el.tagName === this) return htmlDecode(el.innerText);
-        return el.innerHTML;
+        if (el.tagName === 'TEMPLATE') return el.innerHTML;
+        return el.textContent;
     }
     connectedCallback() {
-        this.sourceElement = this.querySelector('pre>code,textarea,style,script') || this;
+        this.sourceElement = this.querySelector('pre>code,textarea,style,script,template') || this;
         if (this.sourceElement.tagName === 'TEXTAREA') {
             this.setAttribute('editable','')
         }
@@ -123,8 +121,8 @@ class code extends HTMLElement {
 
 }
 
-
 customElements.define('u1-code', code)
+
 
 function trimCode(value){
     const lines = value.split('\n');
