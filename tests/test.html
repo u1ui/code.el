@@ -27,23 +27,21 @@
 
     <section>
 
-        <h2>Auto javascript</h2>
+        <h2>No tag</h2>
 
-        <u1-code trim>
-            function get111(){
-                echo 'very long text to test overflow, bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla bla';
-            }
+        <u1-code trim editable>
+            &lt;u1-code&gt;
+            &lt;/u1-code&gt;
         </u1-code>
 
-        <h2>Auto css</h2>
-        <u1-code trim>
-            body {
-                background-color: #f00;
-            }
+        <h2>Template tag</h2>
+        <u1-code trim editable>
+            <template>
+                <img src="xyz.jpg">
+            </template>
         </u1-code>
 
-
-        <h2>Style Tag and "editable"-attribute</h2>
+        <h2>Style Tag</h2>
         <u1-code trim editable>
             <style>
             u1-code {
@@ -57,7 +55,7 @@
         </u1-code>
 
         <h2>Script Tag</h2>
-        <u1-code trim>
+        <u1-code trim editable>
             <script>
                 document.currentScript.parentNode.addEventListener('click', e=>{
                     alert(1)
@@ -65,7 +63,7 @@
             </script>
         </u1-code>
 
-        <h2>Textarea <small>todo: make editable</small></h2>
+        <h2>Textarea</h2>
         <u1-code trim>
             <textarea>
             &lt;u1-code&gt;
