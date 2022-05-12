@@ -36,8 +36,8 @@ class code extends HTMLElement {
             pointer-events:all;
         }
         :host(:not(:hover)) #tools {
-            xopacity:0;
-            xvisibility:hidden;
+            opacity:0;
+            visibility:hidden;
         }
         :host([editable]) textarea {
             display:block !important;
