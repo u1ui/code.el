@@ -4,3 +4,6 @@ u1-code {
     white-space: pre;
     overflow:auto;
 }
+u1-code > :where(script, style) {
+    display:block;
+}
