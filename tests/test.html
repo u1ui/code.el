@@ -27,18 +27,26 @@
 
     <section>
 
-        <h2>No tag</h2>
-
+        <h2>pre > code (preferred)</h2>
         <u1-code trim editable>
+            <pre>
+                <code>
             &lt;u1-code&gt;
+                &lt;pre&gt;
+                    &lt;code&gt;
+                        Shows decoded innerHTML
+                    &lt;/code&gt;
+                &lt;/pre&gt;
             &lt;/u1-code&gt;
+                </code>
+            </pre>
         </u1-code>
 
-        <h2>Template tag</h2>
+        <h2>direct, no tag</h2>
         <u1-code trim editable>
-            <template>
-                <img src="xyz.jpg">
-            </template>
+            &lt;u1-code&gt;
+                Shows decoded innerHTML
+            &lt;/u1-code&gt;
         </u1-code>
 
         <h2>Style Tag</h2>
@@ -49,17 +57,19 @@
                 font-size:14px;
                 background:#fff;
                 box-shadow:0 0 1rem #0004;
-                max-height:10rem;
+                max-height:11rem;
+                border-radius:.5rem;
             }
             </style>
         </u1-code>
 
         <h2>Script Tag</h2>
         <u1-code trim editable>
-            <script>
-                document.currentScript.parentNode.addEventListener('click', e=>{
-                    alert(1)
-                });
+            <script type="non js">
+                <script type="non js">
+                    alert('Shows raw content');
+                    alert('Exeption: \\/script> is translated to \/script> to not break out');
+                <\/script>
             </script>
         </u1-code>
 
@@ -68,10 +78,18 @@
             <textarea>
             &lt;u1-code&gt;
                 &lt;textarea&gt;
-                &amp;lt;u1-code&amp;gt;...
+                    &amp;lt;u1-code&amp;gt;...
                 &lt;/textarea&gt;
             &lt;/u1-code&gt;
             </textarea>
         </u1-code>
+
+        <!--h2>Template tag</h2>
+        <u1-code trim editable>
+            <template>
+                Shows parsed DOM, useful?
+                <input type=checkbox checked>
+            </template>
+        </u1-code-->
 
     </section>
