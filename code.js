@@ -7,7 +7,6 @@ class code extends HTMLElement {
         let shadowRoot = this.attachShadow({ mode: 'open' });
         shadowRoot.innerHTML =
         `<style>
-        @import url(https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/github.min.css);
         :host {
             position:relative;
             white-space:normal !important;
@@ -22,6 +21,17 @@ class code extends HTMLElement {
         #code {
             width:max-content;
         }
+        textarea {
+            display:none;
+            resize:none;
+            background-color:transparent;
+            color:#0000;
+            caret-color:#000;
+            border:none;
+            margin:0;
+            padding:0;
+        }
+
         #tools {
             transition:.1s;
             display:flex;
@@ -43,15 +53,15 @@ class code extends HTMLElement {
             display:block !important;
         }
         </style>
+
+
         <div id=code></div>
-
-        <!-- would be great, if in the case of a hightlighted textarea, the original textarea would be used -->
-        <textarea style="display:none; resize:none; background-color:transparent; color:#0000; caret-color:#000; border:none; margin:0; padding:0">test</textarea>
-
+        <textarea>test</textarea> <!-- would be great, if in the case of a hightlighted textarea, the original textarea would be used -->
         <div id=tools>
             <!--button id=fullscreen>fullscreen</button-->
             <button id=copy>copy</button>
         </div>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/github.min.css">
         `;
 
         this.textarea = shadowRoot.querySelector('textarea');
@@ -92,19 +102,21 @@ class code extends HTMLElement {
     setSourceValue(value){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') { el.value = value; return; }
-        if (el.tagName === 'TEMPLATE') { el.innerHTML = value; return; }
+        //if (el.tagName === 'TEMPLATE') { el.innerHTML = value; return; }
         el.textContent = value;
     }
     getSourceValue(){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') return el.value;
-        if (el.tagName === 'TEMPLATE') return el.innerHTML;
+        //if (el.tagName === 'TEMPLATE') return el.innerHTML;
+        if (el.tagName === 'SCRIPT') return el.textContent.replaceAll('\\/script>','/script>');
         return el.textContent;
     }
     connectedCallback() {
-        this.sourceElement = this.querySelector('pre>code,textarea,style,script,template') || this;
+        //this.sourceElement = this.querySelector('pre>code,textarea,style,script,template') || this;
+        this.sourceElement = this.querySelector('pre>code,textarea,style,script') || this;
         if (this.sourceElement.tagName === 'TEXTAREA') {
-            this.setAttribute('editable','')
+            this.setAttribute('editable','');
         }
         let value = this.getSourceValue();
         if (this.trim) value = trimCode(value);
@@ -138,6 +150,7 @@ function trimCode(value){
     // remove starting minWhitespaces and join lines
     return lines.map(line => line.slice(minWhitespace)).join('\n');
 }
+/*
 function htmlDecode(input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
@@ -147,3 +160,4 @@ function htmlEncode(input) {
         return '&#'+i.charCodeAt(0)+';';
     });
 }
+*/
