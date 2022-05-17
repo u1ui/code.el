@@ -4,7 +4,7 @@ const libPromise = import('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@1
 class code extends HTMLElement {
     constructor() {
         super();
-        let shadowRoot = this.attachShadow({ mode: 'open' });
+        let shadowRoot = this.attachShadow({mode:'open'});
         shadowRoot.innerHTML =
         `<style>
         :host {
@@ -31,7 +31,6 @@ class code extends HTMLElement {
             margin:0;
             padding:0;
         }
-
         #tools {
             transition:.1s;
             display:flex;
@@ -125,7 +124,10 @@ class code extends HTMLElement {
     }
     disconnectedCallback() {
     }
+    get value(){
+        return this.getSourceValue();
 
+    }
     static get observedAttributes() { return ['trim'] }
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'trim') this.trim = newValue!=null;
