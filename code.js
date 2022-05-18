@@ -30,6 +30,7 @@ class code extends HTMLElement {
             border:none;
             margin:0;
             padding:0;
+            outline:none;
         }
         #tools {
             transition:.1s;
@@ -54,8 +55,11 @@ class code extends HTMLElement {
         </style>
 
 
+
+
+
         <div id=code></div>
-        <textarea>test</textarea> <!-- would be great, if in the case of a hightlighted textarea, the original textarea would be used -->
+        <textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>test</textarea> <!-- would be great, if in the case of a hightlighted textarea, the original textarea would be used -->
         <div id=tools>
             <!--button id=fullscreen>fullscreen</button-->
             <button id=copy>copy</button>
