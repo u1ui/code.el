@@ -72,7 +72,6 @@ class code extends HTMLElement {
         shadowRoot.querySelector('#copy').addEventListener('click', () => {
             let code = shadowRoot.querySelector('#code').textContent;
             navigator.clipboard.writeText(code);
-            document.execCommand('copy');
         });
         // shadowRoot.querySelector('#fullscreen').addEventListener('click', () => {
         //     this.requestFullscreen();
