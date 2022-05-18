@@ -55,17 +55,14 @@ class code extends HTMLElement {
         </style>
 
 
-
-
-
         <div id=code></div>
-        <textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>test</textarea> <!-- would be great, if in the case of a hightlighted textarea, the original textarea would be used -->
+        <textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>test</textarea>
         <div id=tools>
-            <!--button id=fullscreen>fullscreen</button-->
             <button id=copy>copy</button>
         </div>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/github.min.css">
         `;
+        // would be great, if in the case of a hightlighted textarea, the original textarea would be used
 
         this.textarea = shadowRoot.querySelector('textarea');
 
@@ -92,7 +89,9 @@ class code extends HTMLElement {
         });
     }
     setHightlightValue(value){
+        if (!this.libLoaded) this.shadowRoot.querySelector('#code').innerHTML = htmlEncode(value); // fast display and then highlight
         libPromise.then( ({default:hljs})=>{
+            this.libLoaded = true;
             let language = false; // todo
             this.shadowRoot.querySelector('#code').innerHTML = (
                 language ?
@@ -160,9 +159,9 @@ function htmlDecode(input) {
     var doc = new DOMParser().parseFromString(input, "text/html");
     return doc.documentElement.textContent;
 }
+*/
 function htmlEncode(input) {
     return input.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
         return '&#'+i.charCodeAt(0)+';';
     });
 }
-*/
