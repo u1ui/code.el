@@ -5,7 +5,8 @@ highlighted, editable code-blocks.
 ## Attributes
 
 `trim`: This will trim empty first and last lines, and most importantly, indentation.  
-`editable`: This will make the code editable.
+`editable`: This will make the code editable.  
+`language`: Define the code-language (auto-detect if not set)
 
 ## Ussage
 
