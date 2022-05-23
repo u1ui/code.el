@@ -60,7 +60,7 @@ class code extends HTMLElement {
         <div id=tools>
             <button id=copy>copy</button>
         </div>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/styles/github.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/github.min.css">
         `;
         // would be great, if in the case of a hightlighted textarea, the original textarea would be used
 
@@ -88,11 +88,23 @@ class code extends HTMLElement {
             }
         });
     }
+    get language(){
+        if (this.hasAttribute('language')) return this.getAttribute('language');
+        const el = this.sourceElement;
+        if (el.tagName === 'STYLE') return 'css';
+        if (el.tagName === 'TEMPLATE') return 'html';
+        if (el.tagName === 'SCRIPT') {
+            let type = el.getAttribute('type');
+            if (type) return type.replace(/^text\/(x-)?/, '');
+            return 'javascript';
+        }
+        return false;
+    }
     setHightlightValue(value){
         if (!this.libLoaded) this.shadowRoot.querySelector('#code').innerHTML = htmlEncode(value); // fast display and then highlight
         libPromise.then( ({default:hljs})=>{
             this.libLoaded = true;
-            let language = false; // todo
+            let language = this.language;
             this.shadowRoot.querySelector('#code').innerHTML = (
                 language ?
                   hljs.highlight(value, {language}) :
@@ -142,12 +154,13 @@ customElements.define('u1-code', code)
 
 function trimCode(value){
     const lines = value.split('\n');
-    // remove first and last line if only contains whitespaces
-    if (lines[0].trim() === '') lines.shift();
-    if (lines[lines.length - 1].trim() === '') lines.pop();
+    // remove first and last lines if only contains whitespaces
+    while (lines[0] != null && lines[0].trim() === '') lines.shift();
+    while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
+
     // evaluate min num of starting whitespace
     let minWhitespace = 999;
-    for (const line of lines) {
+    for (const line of lines) { // todo, ignore if only whitespaces?
         const num = line.match(/^\s*/)[0].length;
         if (num < minWhitespace) minWhitespace = num;
     }
