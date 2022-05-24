@@ -13,7 +13,7 @@ class code extends HTMLElement {
             display:grid !important;
         }
         :host > * {
-            grid-area:1/1/1/1;
+            grid-area:1/1;
             line-height:inherit;
             font:inherit;
             white-space: pre;
@@ -79,9 +79,10 @@ class code extends HTMLElement {
         });
         this.textarea.addEventListener('keydown', function(e) {
             if (e.key === 'Tab') {
+                if (e.ctrlKey || e.metaKey || e.altKey) return;
                 e.preventDefault();
-                var start = this.selectionStart;
-                var end = this.selectionEnd;
+                const start = this.selectionStart;
+                const end = this.selectionEnd;
                 this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
                 this.selectionStart = this.selectionEnd = start + 1;
                 this.dispatchEvent(new Event('input', { bubbles: true }));
@@ -94,7 +95,8 @@ class code extends HTMLElement {
         if (el.tagName === 'STYLE') return 'css';
         if (el.tagName === 'TEMPLATE') return 'html';
         if (el.tagName === 'SCRIPT') {
-            let type = el.getAttribute('type');
+            const type = el.getAttribute('type');
+            if (type==='module') return 'javascript';
             if (type) return type.replace(/^text\/(x-)?/, '');
             return 'javascript';
         }
@@ -104,7 +106,7 @@ class code extends HTMLElement {
         if (!this.libLoaded) this.shadowRoot.querySelector('#code').innerHTML = htmlEncode(value); // fast display and then highlight
         libPromise.then( ({default:hljs})=>{
             this.libLoaded = true;
-            let language = this.language;
+            const language = this.language;
             this.shadowRoot.querySelector('#code').innerHTML = (
                 language ?
                   hljs.highlight(value, {language}) :
