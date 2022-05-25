@@ -11,8 +11,8 @@ highlighted, editable code-blocks.
 ## Ussage
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.css">
-<scrip src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.js"></script>
+<link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.css">
+<scrip src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.js" type=module></script>
 
 <u1-code trim>
     <pre>
@@ -53,4 +53,3 @@ or even:
 ## Demos
 https://raw.githack.com/u1ui/code.el/main/tests/minimal.html  
 https://raw.githack.com/u1ui/code.el/main/tests/test.html  
-
