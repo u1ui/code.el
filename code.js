@@ -1,5 +1,7 @@
 
-const libPromise = import('https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.0/build/es/highlight.min.js');
+
+const libRoot = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/';
+const libPromise = import(libRoot + 'es/highlight.min.js');
 
 class code extends HTMLElement {
     constructor() {
@@ -60,7 +62,7 @@ class code extends HTMLElement {
         <div id=tools>
             <button id=copy>copy</button>
         </div>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/styles/github.min.css">
+        <link rel="stylesheet" href="${libRoot}styles/github.min.css">
         `;
         // would be great, if in the case of a hightlighted textarea, the original textarea would be used
 
