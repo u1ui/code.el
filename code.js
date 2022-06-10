@@ -18,7 +18,7 @@ class code extends HTMLElement {
             grid-area:1/1;
             line-height:inherit;
             font:inherit;
-            white-space: pre;
+            white-space:pre;
         }
         #code {
             width:max-content;
@@ -29,7 +29,7 @@ class code extends HTMLElement {
             background-color:transparent;
             color:#0000;
             caret-color:#000;
-            border:none;
+            border:0;
             margin:0;
             padding:0;
             outline:none;
