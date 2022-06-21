@@ -1,6 +1,5 @@
-# code.el
-highlighted, editable code-blocks.
-
+# &lt;u1-code&gt; - element
+Highlighted, editable code-blocks.
 
 ## Attributes
 
@@ -11,46 +10,34 @@ highlighted, editable code-blocks.
 ## Ussage
 
 ```html
-<link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.css">
-<scrip src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.js" type=module></script>
-
-<u1-code trim>
-    <pre>
-        <code>
-            html {
-                background:red;
-            }
-        </code>
-    </pre>
-</u1-code>
-
-pre and code blocks are optional, but recommended. to have a usefull fallback if javascript is disabled.
-
-OR:
-
-<u1-code trim>
-    <textarea>
-            html {
-                background:red;
-            }
-    </textarea>
-</u1-code>
-
-or even:
-
-<u1-code editable trim>
-    <style>
-            html {
-                background:red;
-            }
+<u1-code trim editable>
+    <style type="x">
+        .foo {
+            color: red;
+        }
     </style>
 </u1-code>
-
-
 ```
 
-
 ## Demos
+
+https://raw.githack.com/u1ui/code.el/main/tests/minimal.html  
+https://raw.githack.com/u1ui/code.el/main/tests/test.html
+
+## Install
+
+```html
+<link href="https://cdn.jsdelivr.net/gh/u1ui/code.el@3.0.0/code.min.css" rel=stylesheet>
+<script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@3.0.0/code.min.js" type=module>
+```
+
+## Demo
+
 https://raw.githack.com/u1ui/code.el/main/tests/minimal.html  
 https://raw.githack.com/u1ui/code.el/main/tests/test.html  
+
+## About
+
+- MIT License, Copyright (c) 2022 <u1> (like all repositories in this organization) <br>
+- Suggestions, ideas, finding bugs and making pull requests make us very happy. ♥
 
