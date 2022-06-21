@@ -1,12 +1,6 @@
 # &lt;u1-code&gt; - element
 Highlighted, editable code-blocks.
 
-## Attributes
-
-`trim`: This will trim empty first and last lines, and most importantly, indentation.  
-`editable`: This will make the code editable.  
-`language`: Define the code-language (auto-detect if not set)
-
 ## Ussage
 
 ```html
@@ -19,11 +13,6 @@ Highlighted, editable code-blocks.
 </u1-code>
 ```
 
-## Demos
-
-https://raw.githack.com/u1ui/code.el/main/tests/minimal.html  
-https://raw.githack.com/u1ui/code.el/main/tests/test.html
-
 ## Install
 
 ```html
@@ -31,10 +20,16 @@ https://raw.githack.com/u1ui/code.el/main/tests/test.html
 <script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@3.0.0/code.min.js" type=module>
 ```
 
-## Demo
+## Demos
 
-https://raw.githack.com/u1ui/code.el/main/tests/minimal.html  
-https://raw.githack.com/u1ui/code.el/main/tests/test.html  
+[minimal.html](https://raw.githack.com/u1ui/code.el/main/tests/minimal.html)  
+[test.html](https://raw.githack.com/u1ui/code.el/main/tests/test.html)  
+
+## Attributes
+
+`trim`: This will trim empty first and last lines, and most importantly, indentation.  
+`editable`: This will make the code editable.  
+`language`: Define the code-language (auto-detect if not set)
 
 ## About
 
