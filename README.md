@@ -5,12 +5,19 @@ Highlighted, editable code-blocks.
 
 ```html
 <u1-code trim editable>
-    <style type="x">
+    <style>
         .foo {
             color: red;
         }
     </style>
 </u1-code>
+```
+
+```css
+u1-code {
+    font-size:15px;
+    max-height:11rem;
+}
 ```
 
 ## Install
@@ -22,8 +29,8 @@ Highlighted, editable code-blocks.
 
 ## Demos
 
-[minimal.html](https://raw.githack.com/u1ui/code.el/main/tests/minimal.html)  
-[test.html](https://raw.githack.com/u1ui/code.el/main/tests/test.html)  
+[minimal.html](http://gcdn.li/u1ui/code.el@main/tests/minimal.html)  
+[test.html](http://gcdn.li/u1ui/code.el@main/tests/test.html)  
 
 ## Attributes
 
