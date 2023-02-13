@@ -23,8 +23,8 @@ u1-code {
 ## Install
 
 ```html
-<link href="https://cdn.jsdelivr.net/gh/u1ui/code.el@3.0.0/code.min.css" rel=stylesheet>
-<script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@3.0.0/code.min.js" type=module>
+<link href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.min.css" rel=stylesheet>
+<script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.min.js" type=module>
 ```
 
 ## Demos
