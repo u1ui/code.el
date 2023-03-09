@@ -1,4 +1,4 @@
-
+// other highlighter that could be used: https://github.com/shikijs/shiki
 
 const libRoot = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/';
 const libPromise = import(libRoot + 'es/highlight.min.js');
