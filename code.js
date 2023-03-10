@@ -119,18 +119,15 @@ class code extends HTMLElement {
     setSourceValue(value){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') { el.value = value; return; }
-        //if (el.tagName === 'TEMPLATE') { el.innerHTML = value; return; }
         el.textContent = value;
     }
     getSourceValue(){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') return el.value;
-        //if (el.tagName === 'TEMPLATE') return el.innerHTML;
         if (el.tagName === 'SCRIPT') return el.textContent.replaceAll('\\/script>','/script>');
         return el.textContent;
     }
     connectedCallback() {
-        //this.sourceElement = this.querySelector('pre>code,textarea,style,script,template') || this;
         this.sourceElement = this.querySelector('pre>code,textarea,style,script') || this;
         if (this.sourceElement.tagName === 'TEXTAREA') {
             this.setAttribute('editable','');
@@ -144,16 +141,14 @@ class code extends HTMLElement {
     }
     get value(){
         return this.getSourceValue();
-
     }
-    static get observedAttributes() { return ['trim'] }
     attributeChangedCallback(name, oldValue, newValue) {
         if (name === 'trim') this.trim = newValue!=null;
     }
-
+    static get observedAttributes() { return ['trim'] }
 }
 
-customElements.define('u1-code', code)
+customElements.define('u1-code', code);
 
 
 function trimCode(value){
@@ -161,7 +156,6 @@ function trimCode(value){
     // remove first and last lines if only contains whitespaces
     while (lines[0] != null && lines[0].trim() === '') lines.shift();
     while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
-
     // evaluate min num of starting whitespace
     let minWhitespace = 999;
     for (const line of lines) { // todo, ignore if only whitespaces?
@@ -171,12 +165,6 @@ function trimCode(value){
     // remove starting minWhitespaces and join lines
     return lines.map(line => line.slice(minWhitespace)).join('\n');
 }
-/*
-function htmlDecode(input) {
-    var doc = new DOMParser().parseFromString(input, "text/html");
-    return doc.documentElement.textContent;
-}
-*/
 function htmlEncode(input) {
     return input.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
         return '&#'+i.charCodeAt(0)+';';
