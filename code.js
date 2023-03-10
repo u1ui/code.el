@@ -1,7 +1,7 @@
 // other highlighter that could be used: https://github.com/shikijs/shiki
 
 const libRoot = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/';
-//const libRoot = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.6.0/build/';
+//const libRoot = 'https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@1.6.0/build/';
 const libPromise = import(libRoot + 'es/highlight.min.js');
 
 class code extends HTMLElement {
