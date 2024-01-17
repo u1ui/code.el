@@ -24,7 +24,7 @@ u1-code {
 
 ```html
 <link href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.min.css" rel=stylesheet>
-<script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.min.js" type=module>
+<script src="https://cdn.jsdelivr.net/gh/u1ui/code.el@x.x.x/code.min.js" type=module></script>
 ```
 
 ## Demos
