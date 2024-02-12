@@ -13,8 +13,40 @@
     <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/classless.css/simple.min.css">
 
 
+
+    <!--script src="https://cdn.jsdelivr.net/gh/u1ui/ico.el/ico.js"></script>
+    <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/ico.el/ico.css"-->
+    <script src="../../ico.el/ico.js" type=module></script>
+    <link rel=stylesheet href="../../ico.el/ico.css">
+    <style>
+    html {
+        --u1-ico-dir:'https://cdn.jsdelivr.net/npm/@adobe/spectrum-css-workflow-icons@1.4.2/24/{IconName}.svg';
+    }
+    </style>
+        
+    <script src="../../tooltip.el/tooltip.js" type=module></script>
+    <link rel=stylesheet href="../../tooltip.el/tooltip.css">
+    <style>
+    u1-tooltip {
+        font-size:max(12px, .7rem);
+        background:var(--color-text);
+        color:var(--color-bg);
+        border-radius:.3rem;
+    }
+    </style>
+
+
+
     <link rel=stylesheet href="../code.css">
     <script src="../code.js" type=module></script>
+
+    <style>
+    button::after {
+        display: none !important;
+        content: '' !important;
+        background: red;
+    }
+    </style>
 
 </head>
 
@@ -35,6 +67,16 @@
             &lt;/u1-code&gt;
                 </code>
             </pre>
+
+            <button slot=tools style="margin:0; padding:.3rem; text-align:center; background-color:transparent; color:inherit" onclick="this.parentNode.requestFullscreen()">
+                <u1-ico icon=full-screen style="font-size:1.2rem"></u1-ico>
+                <u1-tooltip>Fullscreen</u1-tooltip>
+            </button>
+            <button slot=tools style="margin:0; padding:.3rem; text-align:center; background-color:transparent; color:inherit" onclick="this.parentNode.copy()">
+                <u1-ico icon=copy style="font-size:1.2rem"></u1-ico>
+                <u1-tooltip>Copy</u1-tooltip>
+            </button>
+
         </u1-code>
 
         <h2>direct, no tag</h2>
@@ -51,7 +93,7 @@
                 padding:.5rem;
                 font-size:14px;
                 background:#fff;
-                box-shadow:0 0 1rem #0004;
+                box-shadow:0 0 .3rem #0003;
                 max-height:11rem;
                 border-radius:.5rem;
             }
@@ -69,15 +111,20 @@
         </u1-code>
 
         <h2>Textarea</h2>
-        <u1-code trim>
-            <textarea>
-            &lt;u1-code&gt;
-                &lt;textarea&gt;
-                    &amp;lt;u1-code&amp;gt;...
-                &lt;/textarea&gt;
-            &lt;/u1-code&gt;
-            </textarea>
-        </u1-code>
+        <label>
+            Label
+
+            <u1-code trim>
+                <textarea>
+                &lt;u1-code&gt;
+                    &lt;textarea&gt;
+                        &amp;lt;u1-code&amp;gt;...
+                    &lt;/textarea&gt;
+                &lt;/u1-code&gt;
+                </textarea>
+            </u1-code>
+
+        </label>
 
         <!--h2>Template tag</h2>
         <u1-code trim editable>

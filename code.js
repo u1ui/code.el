@@ -35,13 +35,15 @@ class code extends HTMLElement {
             outline:none;
         }
         #tools {
+            white-space:normal;
             transition:.1s;
             display:flex;
             justify-content:flex-end;
             align-items:start;
+            gap:.3em;
             pointer-events:none;
         }
-        #tools > * {
+        #tools > *, #tools::slotted(button) {
             position:sticky;
             right:0;
             top:0;
@@ -58,38 +60,22 @@ class code extends HTMLElement {
 
 
         <div id=code></div>
-        <textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>test</textarea>
-        <div id=tools>
-            <button id=copy>copy</button>
-        </div>
+        <textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false></textarea>
+        <slot id=tools name=tools></slot>
         <link rel="stylesheet" href="${libRoot}styles/github.min.css">
         `;
         // would be great, if in the case of a hightlighted textarea, the original textarea would be used
 
         this.textarea = shadowRoot.querySelector('textarea');
 
-        shadowRoot.querySelector('#copy').addEventListener('click', () => {
-            let code = shadowRoot.querySelector('#code').textContent;
-            navigator.clipboard.writeText(code);
-        });
-        // shadowRoot.querySelector('#fullscreen').addEventListener('click', () => {
-        //     this.requestFullscreen();
-        // });
         this.textarea.addEventListener('input', e => {
             this.setHightlightValue(e.target.value);
             this.setSourceValue(e.target.value);
         });
-        this.textarea.addEventListener('keydown', function(e) {
-            if (e.key === 'Tab') {
-                if (e.ctrlKey || e.metaKey || e.altKey) return;
-                e.preventDefault();
-                const start = this.selectionStart;
-                const end = this.selectionEnd;
-                this.value = this.value.substring(0, start) + "\t" + this.value.substring(end);
-                this.selectionStart = this.selectionEnd = start + 1;
-                this.dispatchEvent(new Event('input', { bubbles: true }));
-            }
-        });
+    }
+    copy(){
+        let code = this.shadowRoot.querySelector('#code').textContent;
+        navigator.clipboard.writeText(code);
     }
     get language(){
         if (this.hasAttribute('language')) return this.getAttribute('language');
@@ -136,8 +122,6 @@ class code extends HTMLElement {
         if (this.trim) value = trimCode(value);
         this.setHightlightValue(value);
         this.textarea.value = value;
-    }
-    disconnectedCallback() {
     }
     get value(){
         return this.getSourceValue();

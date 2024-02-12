@@ -1,9 +1,25 @@
 u1-code {
     font-family: Consolas, "Courier New", Courier, monospace;
     display:block;
-    white-space: pre;
     overflow:auto;
+    xwhite-space: pre;
 }
 u1-code > :where(script, style) {
     display:block;
+}
+
+/* new */
+u1-code:not(:has(>*)) {
+    white-space: pre;
+}
+u1-code > :where(pre, code, style, script, textarea) {
+    padding:0;
+    margin:0;
+    font: inherit;
+}
+:where(u1-code > textarea) {
+    width:100%;
+    height:10rem;
+    /* field-sizing:content; */
+    border:0;
 }
