@@ -12,12 +12,15 @@ u1-code > :where(script, style) {
 u1-code:not(:has(>*)) {
     white-space: pre;
 }
-u1-code > :where(pre, code, style, script, textarea) {
+u1-code > :is(pre, code, style, script, textarea),
+u1-code > pre > code {
     padding:0;
     margin:0;
     font: inherit;
+    display:block;
+    background:transparent;
 }
-:where(u1-code > textarea) {
+u1-code > :where(textarea) {
     width:100%;
     height:10rem;
     /* field-sizing:content; */

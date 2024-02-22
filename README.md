@@ -1,7 +1,7 @@
 # &lt;u1-code&gt; - element
 Highlighted, editable code-blocks.
 
-## Ussage
+## Usage
 
 ```html
 <u1-code trim editable>

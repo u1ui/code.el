@@ -8,7 +8,7 @@ highlighted, editable code-blocks.
 `editable`: This will make the code editable.  
 `language`: Define the code-language (auto-detect if not set)
 
-## Ussage
+## Usage
 
 ```html
 <link rel=stylesheet href="https://cdn.jsdelivr.net/gh/u1ui/code.el@x/code.css">
