@@ -12,7 +12,7 @@ class code extends HTMLElement {
         :host {
             position:relative;
             white-space:normal !important;
-            display:grid !important;
+            display:grid !important; /* todo, move main css? would also be useful there. Why important? could be problematic */
         }
         :host > * {
             grid-area:1/1;

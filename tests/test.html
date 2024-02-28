@@ -36,7 +36,6 @@
     </style>
 
 
-
     <link rel=stylesheet href="../code.css">
     <script src="../code.js" type=module></script>
 
@@ -119,6 +118,20 @@
                     &lt;/textarea&gt;
                 &lt;/u1-code&gt;
                 </textarea>
+            </u1-code>
+
+        </label>
+        
+        <h2>Textarea auto-height with css (field-sizing:content)</h2>
+
+        <label>
+            Label
+            <u1-code trim style="min-height:140px; max-height:200px">
+                
+<textarea autocomplete=off autocorrect=off autocapitalize=off spellcheck=false>&lt;u1-code&gt;
+    This u1-code element has min-height:140px; max-height:200px
+    It resizes between these values even without css (only chromium for now)
+&lt;/u1-code&gt;</textarea>
             </u1-code>
 
         </label>

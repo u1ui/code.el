@@ -22,7 +22,17 @@ u1-code > pre > code {
 }
 u1-code > :where(textarea) {
     width:100%;
-    height:10rem;
-    /* field-sizing:content; */
     border:0;
+    height:10rem;
+
+    @supports (field-sizing:content) {
+        field-sizing:content;
+        height:auto;
+        resize: none;
+    }
+
+    /* does not work
+    min-height: -webkit-fill-available;
+    min-height: stretch;
+    */
 }
