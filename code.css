@@ -2,7 +2,6 @@ u1-code {
     font-family: Consolas, "Courier New", Courier, monospace;
     display:block;
     overflow:auto;
-    xwhite-space: pre;
 }
 u1-code > :where(script, style) {
     display:block;
