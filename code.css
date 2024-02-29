@@ -36,3 +36,7 @@ u1-code > :where(textarea) {
     min-height: stretch;
     */
 }
+
+u1-code:not(:defined) > [slot="tools"]{
+    display:none;
+}
