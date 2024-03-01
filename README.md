@@ -20,6 +20,17 @@ u1-code {
 }
 ```
 
+## API
+
+Attributes:
+- `trim`: This will trim empty first and last lines, and most importantly, indentation.
+- `editable`: This will make the code editable.
+- `language`: Define the code-language (auto-detect if not set)
+- `element`: ID of the element its innerHTML should be used as code.
+
+Slots:
+- `tools`: Elements that will be placed in the top-right corner of the code-block.
+
 ## Install
 
 ```html

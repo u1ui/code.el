@@ -105,16 +105,33 @@ class code extends HTMLElement {
     setSourceValue(value){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') { el.value = value; return; }
-        el.textContent = value;
+
+        if (this.element) {
+            el.innerHTML = value;
+        } else {
+            el.textContent = value;
+        }
     }
     getSourceValue(){
         const el = this.sourceElement;
         if (el.tagName === 'TEXTAREA') return el.value;
         if (el.tagName === 'SCRIPT') return el.textContent.replaceAll('\\/script>','/script>');
-        return el.textContent;
+        if (this.element) {
+            return el.innerHTML;
+        } else {
+            return el.textContent;
+        }
     }
     connectedCallback() {
-        this.sourceElement = this.querySelector('pre>code,textarea,style,script') || this;
+
+        this.element = this.getAttribute('element');
+        if (this.element) {
+            this.sourceElement = document.getElementById(this.element);
+            if (!this.sourceElement) console.error('u1-code: element not found', this.element);
+        } else {
+            this.sourceElement = this.querySelector('pre>code,textarea,style,script') || this;
+        }
+
         if (this.sourceElement.tagName === 'TEXTAREA') {
             this.setAttribute('editable','');
         }
@@ -142,7 +159,8 @@ function trimCode(value){
     while (lines.length && lines[lines.length - 1].trim() === '') lines.pop();
     // evaluate min num of starting whitespace
     let minWhitespace = 999;
-    for (const line of lines) { // todo, ignore if only whitespaces?
+    for (const line of lines) {
+        if (line.match(/^\s*$/)) continue; // ignore empty lines
         const num = line.match(/^\s*/)[0].length;
         if (num < minWhitespace) minWhitespace = num;
     }
